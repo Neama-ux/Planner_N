@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planner_N</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f0f8ff; color:#333; margin:0; padding:20px; }
+    header { background:#e0f0ff; padding:20px; border-radius:12px; text-align:center; }
+    h1 { color:#007acc; }
+    .quote { font-style:italic; margin:20px 0; }
+    .planner { margin-top:30px; }
+    .task input { padding:6px; width:80%; }
+    .task button { padding:6px 12px; background:#007acc; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+    .task button:hover { background:#005f99; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue dans ton planner</h1>
+    <p class="quote" id="quote">« Chaque jour est une nouvelle chance de réussir. »</p>
+  </header>
+
+  <section class="planner">
+    <h2>Planificateur quotidien</h2>
+    <div class="task">
+      <input type="text" placeholder="Ajouter une tâche…" id="taskInput" />
+      <button onclick="addTask()">Ajouter</button>
+    </div>
+    <ul id="taskList"></ul>
+  </section>
+
+  <script>
+    const quotes = [
+      "Travaille dur en silence, laisse le succès faire du bruit.",
+      "Tu es plus fort que tu ne le crois.",
+      "Chaque grand rêve commence avec un rêveur.",
+      "L'avenir appartient à ceux qui se lèvent tôt.",
+      "N’abandonne jamais, car c’est souvent le dernier effort qui donne la victoire."
+    ];
+    document.getElementById("quote").innerText = quotes[Math.floor(Math.random()*quotes.length)];
+
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (task) {
+        const li = document.createElement("li");
+        li.textContent = task;
+        document.getElementById("taskList").appendChild(li);
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
